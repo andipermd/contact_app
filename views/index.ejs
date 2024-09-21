@@ -1,0 +1,142 @@
+<section id="home">
+    <div class="landingPage">
+        <div class="container">
+            <%- include('layouts/nav') %>
+                <!-- flash message -->
+
+                <% if (msg.length !=0) { %>
+                    <div class="alert alert-success" role="alert">
+                        <i class="bi bi-check-lg"></i>
+                        <%= msg %>
+                    </div>
+                    <% } %>
+
+                        <!-- landing page content -->
+                        <div class="landingContent animatable hidden">
+                            <h1 class="display-3 fw-bold mb-4">Welcome to My Contact App</h1>
+                            <p class="lead mb-4">Manage your contacts with ease and efficiency. Stay organized and
+                                connected.</p>
+                            <a class="btn btn-primary btn-lg" href="/login">Get Started</a>
+                        </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="aboutSection">
+        <div
+            class="container d-flex flex-column justify-content-center align-items-center text-center min-vh-100 animatable hidden">
+            <h1 class="display-5 mb-4">Why is it important to manage contacts effectively?</h1>
+            <p class="lead mb-4">
+                Managing contacts effectively is essential for maintaining organized and efficient relationships. It
+                allows
+                you to quickly find important information, keep communication smooth, and ensure valuable
+                connections
+                are
+                not missed. Good contact management also prevents data duplication and ensures all contact
+                information
+                is
+                accurate and up-to-date.
+            </p>
+            <div class="sectionFeature d-flex flex-wrap justify-content-center gap-4 pt-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="bi bi-person-add fs-1 mb-3"></i>
+                        <h5 class="card-title">Easy Contact Addition</h5>
+                        <p class="card-text">Quickly add new contacts with ease and efficiency.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="bi bi-person-check fs-1 mb-3"></i>
+                        <h5 class="card-title">Accurate Information</h5>
+                        <p class="card-text">Ensure all your contacts are up-to-date and accurate.</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="bi bi-person-x fs-1 mb-3"></i>
+                        <h5 class="card-title">Effortless Management</h5>
+                        <p class="card-text">Easily manage and update your contacts in one place.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Help Section -->
+<section id="help" class="py-5">
+    <div class="container d-flex align-items-center flex-wrap animatable hidden">
+        <div class="col-md-6">
+            <img src="img/StockCake-Home Office Setup_1725159518.jpg" alt="Home Office Setup"
+                class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <div class="textSection p-4">
+                <h1 class="mb-4">Easy to Use - How to Get Started</h1>
+                <p>Getting started with our contact management app is simple and intuitive. Just follow a few easy
+                    steps, and you'll be able to efficiently manage your contacts in no time. Whether you're adding
+                    new
+                    contacts, organizing existing ones, or keeping track of important information, our app is
+                    designed
+                    to make the process seamless and stress-free.</p>
+                <p>To begin, create an account, and you'll have access to all the features you need to stay
+                    organized.
+                    Our user-friendly interface ensures that even those new to technology can navigate the app with
+                    ease. Let's get started and make managing your contacts easier than ever!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- footer -->
+<footer class="footer mt-auto py-4 bg-dark text-white">
+    <div class="container animatable hidden">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Contact Us</h5>
+                <p>If you have any questions, feel free to reach out!</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-envelope"></i> andipermadi001@gmail.com</li>
+                    <li><i class="bi bi-telephone"></i> 081213782334</li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <h5>Follow Us</h5>
+                <div class="social-links">
+                    <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.instagram.com/andipermd" class="text-white"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col text-center">
+                <p>&copy; 2024 My Contact App. By <a href="https://www.instagram.com/andipermd">Andi permadi</a>.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.classList.remove('hidden');
+            } else {
+                entry.target.classList.add('hidden');
+                entry.target.classList.remove('visible');
+            }
+        });
+    });
+
+    const elements = document.querySelectorAll('.animatable');
+    elements.forEach(el => {
+        observer.observe(el);
+    });
+
+</script>

@@ -1,0 +1,48 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Form Edit Data </h2>
+            <!-- validation dari app.js -->
+            <!-- cek jika error -->
+            <% if (typeof errors !='undefined' ) { %>
+                <div class="alert alert-danger fw-bold " role="alert">
+                    <ul>
+                        <% errors.forEach(err=> { %>
+                            <li>
+                                <%= err.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                    <!-- form tambah data  -->
+                    <form method="post" action="/contact?_method=PUT">
+                        <input type="hidden" name="_id" value="<%= contact._id %>">
+                        <!-- name = atribut input, nama = value yang akan diisikan, Required wajib didisi-->
+                        <div class="mb-3">
+                            <!-- input Hidden untuk menangkap oldName -->
+                            <!-- mengecek oldNama tidak akan berubah,  -->
+                            <!-- jika contact.oldNama = ada isinya maka isi dengan contact.oldNama or jika ngga ada baru isi dengan contact.nama-->
+                            <input type="hidden" name="oldName" value="<%= contact.oldName || contact.nama %>">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama" value="<%= contact.nama%>"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noHp" class="form-label">No HP</label>
+                            <input type="text" class="form-control" id="noHp" name="noHp" value="<%= contact.noHp %>"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                value="<%= contact.email %>" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Ubah data
+                            contact</button>
+                    </form>
+        </div>
+    </div>
+</div>

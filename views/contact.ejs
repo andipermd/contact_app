@@ -1,0 +1,74 @@
+<div class="m-3 ">
+    <div class="row">
+        <div class="col-md-15">
+            <h2>Daftar Contact</h2>
+            <a href="/contact/add" class="btn btn-primary mb-2">Tambah data Contact</a>
+            <!-- flash message -->
+
+            <% if (msg.length !=0 ) { %>
+                <div class="alert alert-success" role="alert">
+                    <i class="bi bi-check-lg"></i>
+                    <%= msg %>
+                </div>
+                <% } %>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Nomer Handphone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- jika data [kosong] -->
+                            <% if (contacts.length < 1) { %>
+                                <tr>
+                                    <th colspan="4">
+                                        <div class="alert alert-danger fw-bold text-center" role="alert">Contact
+                                            data is
+                                            Empty
+                                        </div>
+                                    </th>
+                                </tr>
+                                <% } %>
+                                    <!-- Jika data ada -->
+                                    <% contacts.forEach((data, i)=> { %>
+                                        <tr>
+                                            <th scope="row">
+                                                <%= i + 1 %>
+                                            </th>
+                                            <td>
+                                                <%= data.nama %>
+                                            </td>
+                                            <td>
+                                                <%= data.noHp %>
+                                            </td>
+                                            <td>
+
+                                                <a href="/contact/<%= data.nama %>"
+                                                    class="btn btn-info badge rounded-pill"><i
+                                                        class="bi bi-info-circle"></i>
+                                                    Detaills</a>
+                                                <a href="/contact/edit/<%= data.nama%>" class="btn btn-primary badge"><i
+                                                        class="bi bi-x-circle"></i>
+                                                    Edit</a>
+                                                <form action="/contact?_method=DELETE" method="POST" class="d-inline">
+                                                    <input type="hidden" name="_id" value="<%= data._id %>">
+                                                    <button type="submit" class="btn btn-danger badge"
+                                                        onclick="return confirm('yaqin ??')">Hapus</button>
+                                                </form>
+                                                <a href="https://wa.me/<%= data.noHp %>
+                                                    " class="btn btn-success badge"><i class="bi bi-whatsapp"></i>
+                                                    Chat</a>
+                                            </td>
+                                        </tr>
+
+                                        <% }) %>
+
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+</div>

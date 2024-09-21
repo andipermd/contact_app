@@ -1,0 +1,92 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
+    <div class="row justify-content-center w-100">
+        <div class="col-md-8 col-lg-6 bg-white p-4 rounded-3 shadow">
+            <h2 class="text-center mb-4">Login Akun</h2>
+
+            <!-- Cek jika ada error -->
+            <% if (typeof errors !=='undefined' && errors.length> 0) { %>
+                <div class="alert alert-danger fw-bold" role="alert">
+                    <ul>
+                        <% errors.forEach(err=> { %>
+                            <li>
+                                <%= err.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                    <form method="post" action="/login">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                placeholder="Masukkan username" required>
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Masukkan password" required>
+                                <span class="input-group-text" onclick="togglePassword('password')">
+                                    <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    <span>Belum punya akun ? <a href="/register">Daftar disini</a></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = document.getElementById('togglePasswordIcon');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        toggleIcon.classList.toggle('bi-eye');
+        toggleIcon.classList.toggle('bi-eye-slash');
+    }
+</script>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    .bg-white {
+        background: white;
+    }
+
+    .rounded-3 {
+        border-radius: 10px;
+    }
+
+    .shadow {
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+
+    .btn {
+        border-radius: 5px;
+    }
+
+    .input-group-text {
+        cursor: pointer;
+    }
+</style>

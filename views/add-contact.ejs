@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h2>Form Tambah Data Contact</h2>
+            <!-- validation dari app.js -->
+            <!-- cek jika error -->
+            <% if (typeof errors !='undefined' ) { %>
+                <div class="alert alert-danger fw-bold " role="alert">
+                    <ul>
+                        <% errors.forEach(err=> { %>
+                            <li>
+                                <%= err.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                    <!-- form tambah data  -->
+                    <form method="post" action="/contact">
+                        <!-- name = atribut input, nama = value yang akan diisikan, Required wajib didisi-->
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="noHp" class="form-label">No HP</label>
+                            <input type="text" class="form-control" id="noHp" name="noHp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Tambah data
+                            contact</button>
+                    </form>
+        </div>
+    </div>
+</div>
